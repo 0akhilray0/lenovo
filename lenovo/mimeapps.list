@@ -1,0 +1,5 @@
+[Default Applications]
+audio/mpeg=mpv.desktop
+
+[Added Associations]
+audio/mpeg=mpv.desktop;
