@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 #===============================================================================
-# Install packages script (rock-solid, interactive)
-# One package per line for safe commenting
+# Final Rock-Solid Interactive Arch Linux Setup Script
+# One package/service per line for safe commenting
 #===============================================================================
 
+# ======================
+# Helper functions
+# ======================
 confirm() {
     while true; do
         read -rp "$1 (y/n): " yn
@@ -24,11 +27,31 @@ install_package() {
     fi
 }
 
+enable_service() {
+    local svc=$1
+    if systemctl list-unit-files | grep -q "^$svc.*enabled"; then
+        echo "Service $svc already enabled, skipping."
+    else
+        echo "Enabling service $svc..."
+        sudo systemctl enable --now "$svc"
+    fi
+}
+
+disable_service() {
+    local svc=$1
+    if systemctl list-unit-files | grep -q "^$svc.*enabled"; then
+        echo "Disabling service $svc..."
+        sudo systemctl disable --now "$svc"
+    else
+        echo "Service $svc already disabled, skipping."
+    fi
+}
+
 # ======================
 # Ask global preferences
 # ======================
 echo "==============================================="
-echo "Package installation script"
+echo "Interactive Arch Linux Setup Script (Final)"
 echo "==============================================="
 
 if confirm "Do you want to approve each package individually?"; then
@@ -37,9 +60,16 @@ else
     PROMPT_PACKAGES=0
 fi
 
+if confirm "Do you want to approve each service individually?"; then
+    PROMPT_SERVICES=1
+else
+    PROMPT_SERVICES=0
+fi
+
 # ======================
 # Define package sections
 # ======================
+
 CORE_PACKAGES=(
     #base
     #base-devel
@@ -52,9 +82,6 @@ CORE_PACKAGES=(
 
 HYPRLAND_DESKTOP=(
     hyprland
-    polkit-gnome
-    kwallet
-    kwallet5
     waybar
     swaync
     hyprpaper
@@ -111,7 +138,7 @@ NETWORKING_PACKAGES=(
     blueman
     bluez
     bluez-utils
-    #iwd
+    iwd
 )
 
 OPTIONAL_PACKAGES=(
@@ -126,7 +153,32 @@ OPTIONAL_PACKAGES=(
 )
 
 # ======================
-# Install loop
+# Define services
+# ======================
+
+SYSTEM_SERVICES=(
+    NetworkManager.service
+    bluetooth.service
+    pipewire.service
+    pipewire-pulse.service
+    wireplumber.service
+)
+
+USER_SERVICES=(
+    waybar.service
+    swaync.service
+    hyprpaper.service
+    gnome-keyring-daemon.service
+    xdg-desktop-portal-hyprland.service
+)
+
+OPTIONAL_SERVICES=(
+    kwalletmanager.service
+    #zram-generator.service
+)
+
+# ======================
+# Install packages
 # ======================
 install_section() {
     local section_name=$1[@]
@@ -150,6 +202,30 @@ install_section() {
 }
 
 # ======================
+# Enable services
+# ======================
+enable_section() {
+    local section_name=$1[@]
+    local services=("${!section_name}")
+    echo "---------------------------------------"
+    echo "Enabling section: ${1}"
+    echo "---------------------------------------"
+
+    for svc in "${services[@]}"; do
+        [[ $svc == \#* ]] && continue
+        if [ "$PROMPT_SERVICES" -eq 1 ]; then
+            if confirm "Enable service $svc?"; then
+                enable_service "$svc"
+            else
+                echo "Skipping service $svc"
+            fi
+        else
+            enable_service "$svc"
+        fi
+    done
+}
+
+# ======================
 # Run sections
 # ======================
 install_section CORE_PACKAGES
@@ -160,7 +236,23 @@ install_section FONTS_THEMES
 install_section NETWORKING_PACKAGES
 install_section OPTIONAL_PACKAGES
 
+enable_section SYSTEM_SERVICES
+enable_section USER_SERVICES
+enable_section OPTIONAL_SERVICES
+
+# ======================
+# Disable iwd safely
+# ======================
+echo "---------------------------------------"
+echo "Disabling iwd.service as requested"
+echo "---------------------------------------"
+if confirm "Do you want to disable iwd.service?"; then
+    disable_service iwd.service
+else
+    echo "iwd.service left enabled"
+fi
+
 echo "======================================="
-echo "Package installation completed!"
+echo "All done! Your system should now be set up."
 echo "======================================="
 
