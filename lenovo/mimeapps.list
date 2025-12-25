@@ -1,5 +1,8 @@
 [Default Applications]
 audio/mpeg=mpv.desktop
+application/octet-stream=com.mitchellh.ghostty.desktop
 
 [Added Associations]
 audio/mpeg=mpv.desktop;
+image/jpeg=org.gnome.Papers.desktop;
+application/octet-stream=nvim.desktop;com.mitchellh.ghostty.desktop;
