@@ -58,23 +58,21 @@ fi
 # ======================
 SYSTEM_SERVICES=(
     NetworkManager
+    greetd
     bluetooth
-    pipewire
-    pipewire-pulse
-    wireplumber
+    xdg-desktop-portal
+    xdg-desktop-portal-hyprland
 )
 
 USER_SERVICES=(
-    waybar
-    swaync
-    hyprpaper
+    pipewire
+    pipewire-pulse
+    wireplumber
     gnome-keyring-daemon
-    xdg-desktop-portal-hyprland
 )
 
 OPTIONAL_SERVICES=(
     kwalletmanager
-    zram-generator
 )
 
 # ======================

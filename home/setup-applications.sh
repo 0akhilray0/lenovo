@@ -52,6 +52,8 @@ CORE_PACKAGES=(
 
 HYPRLAND_DESKTOP=(
     hyprland
+    greetd
+    greetd-tuigreet
     polkit-gnome
     kwallet
     kwallet5
