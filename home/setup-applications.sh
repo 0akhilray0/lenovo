@@ -59,6 +59,7 @@ HYPRLAND_DESKTOP=(
     kwallet5
     waybar
     swaync
+    pavucontrol
     hyprpaper
     ghostty
     rofi
