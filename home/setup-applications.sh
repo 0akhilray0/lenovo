@@ -60,7 +60,7 @@ HYPRLAND_DESKTOP=(
     waybar
     swaync
     pavucontrol
-    hyprpaper
+    swaybg
     ghostty
     rofi
     nm-applet
