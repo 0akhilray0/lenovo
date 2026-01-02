@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 alias ll 'ls -la'
-alias yazi 'sudo yazi'
+#alias yazi 'sudo yazi'
 alias cls 'clear'
 #DUAL BOOT WINDOWS COMMAND
 alias windows 'sudo grub-reboot "Windows11"; sudo reboot'
