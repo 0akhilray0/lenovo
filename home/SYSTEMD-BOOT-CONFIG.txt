@@ -1,0 +1,12 @@
+ENTRIES CONF
+# Created by: archinstall
+# Created on: 2026-01-31_09-56-01
+title   Arch Linux (linux-lts)
+linux   /vmlinuz-linux-lts
+initrd  /initramfs-linux-lts.img
+options root=PARTUUID=dc83a063-55ff-4fcc-874b-37e639ffc94a rw rootfstype=ext4 quiet loglevel=3 systemd.show_status=auto rd.udev.log_level=3 vt.global_cursor_default=0 splash
+
+
+LOADER CONFIGURATION
+timeout 0
+#console-mode keep

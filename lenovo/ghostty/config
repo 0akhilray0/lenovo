@@ -1,0 +1,84 @@
+# =============================================================================
+# Ghostty Terminal Configuration - High Contrast Retro
+# =============================================================================
+
+# Font Configuration
+font-family = Fira Code Regular
+font-size = 12
+# Adjusted size up slightly as VT323 can be small at 11
+
+# =============================================================================
+# WINDOW & TRANSPARENCY
+# =============================================================================
+# 0.85 is the sweet spot for readability vs aesthetics
+background-opacity = 0.6
+window-padding-x = 1
+window-padding-y = 1
+window-decoration = false
+
+# =============================================================================
+# THEME: AMBER RETRO WITH GREEN ACCENTS
+# =============================================================================
+
+# Background: Pure Black
+background = #000000
+
+# Foreground: Golden Amber (High contrast against black)
+foreground = #ffb000
+
+# Selection: Subtle amber background with bright white text
+selection-background = #4d3300
+selection-foreground = #ffffff
+
+# Cursor: "Matrix" Green (The accent you requested)
+cursor-color = #33ff00
+cursor-text = #000000
+cursor-style = block
+cursor-style-blink = true
+
+# =============================================================================
+# 16 COLOR PALETTE (Optimized for Readability)
+# =============================================================================
+
+# BLACKS
+# Palette 0 is slightly lifted from pure black so TUI borders are visible
+palette = 0=#121212
+# Palette 8 (Grey) is brightened so code comments are actually readable
+palette = 8=#666666
+
+# REDS (Error messages)
+# Kept distinct from the orange text
+palette = 1=#ff4444
+palette = 9=#ff6e6e
+
+# GREENS (The Accents)
+# "Forest Green" for normal text, "Neon Green" for bold
+palette = 2=#228b22
+palette = 10=#33ff00
+
+# YELLOWS/ORANGES (Main Theme Vibe)
+palette = 3=#ffaa00
+palette = 11=#ffcc33
+
+# BLUES (Readability Fix)
+# Lifted these significantly so they don't disappear on black
+palette = 4=#4da6ff
+palette = 12=#80c2ff
+
+# MAGENTAS
+palette = 5=#bf40bf
+palette = 13=#df80ff
+
+# CYANS
+palette = 6=#00cece
+palette = 14=#00ffff
+
+# WHITES
+palette = 7=#dddddd
+palette = 15=#ffffff
+
+# =============================================================================
+# BEHAVIOR
+# =============================================================================
+mouse-hide-while-typing = true
+copy-on-select = clipboard

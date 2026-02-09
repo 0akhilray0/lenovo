@@ -1,0 +1,10 @@
+Step 1: Check fish path
+which fish
+
+
+Usually:
+
+/usr/bin/fish
+
+Step 2: Change default shell
+chsh -s /usr/bin/fish

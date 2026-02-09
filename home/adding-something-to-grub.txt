@@ -1,0 +1,20 @@
+1. Commands used in this tutorial:
+
+2. To find BIOS boot partition: sudo fdisk -l
+
+3. To get UUID of BIOS boot partition: sudo blkid /dev/sda1
+
+4. Edit GRUB file: sudo nano /etc/grub.d/40_custom
+
+5. Windows menu entry code: 
+
+menuentry "Windows" --class windows --class os {
+    search --fs-uuid --no-floppy --set=root UUID_Here
+  chainloader (${root})/EFI/Microsoft/Boot/bootmgfw.efi
+}
+
+
+6. Command to update grub in Arch linux: sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+
+

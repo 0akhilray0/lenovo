@@ -1,0 +1,43 @@
+1. Install the CPU Tool
+
+On the fresh system, install cpupower to control the processor:
+Bash
+
+sudo pacman -S cpupower
+
+2. Force Performance Mode (The Config)
+
+Run this command block to create the configuration file that forces the "Performance" governor:
+Bash
+
+echo "governor='performance'" | sudo tee /etc/default/cpupower
+
+3. Unlock Turbo Boost (The Hardware Hack)
+
+Run this command to create the rule that forces Turbo Boost (2.6 GHz) to stay ON:
+Bash
+
+echo "w /sys/devices/system/cpu/intel_pstate/no_turbo - - - - 0" | sudo tee /etc/tmpfiles.d/no_turbo.conf
+
+4. Enable the Service
+
+Turn it all on:
+Bash
+
+sudo systemctl enable --now cpupower
+
+
+
+
+
+
+/// Intel drivers and grafic support 
+sudo pacman -S \
+mesa \
+lib32-mesa \
+vulkan-intel \
+lib32-vulkan-intel \
+vulkan-icd-loader \
+lib32-vulkan-icd-loader \
+intel-media-driver \
+libva-intel-driver

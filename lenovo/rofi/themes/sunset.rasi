@@ -1,0 +1,135 @@
+/************************************************
+ * ROFI Modern Dark Transparent - Sunset Edition
+ * Colors: Deep Charcoal, Burnt Orange, & Red
+ ************************************************/
+
+* {
+    /* Colors: Deep Charcoal & Sunset Orange/Red */
+    background:                  rgba ( 25, 20, 20, 85 % ); /* Slightly warmer dark */
+    background-alt:              rgba ( 60, 40, 40, 45 % );
+    foreground:                  rgba ( 245, 225, 220, 100 % );
+    
+    /* The "Sunset" Accents */
+    accent-color:                rgba ( 225, 75, 50, 85 % );  /* Warm Red-Orange */
+    selected-fg:                 rgba ( 255, 255, 255, 100 % );
+    border-color:                rgba ( 225, 90, 50, 30 % );
+    
+    separatorcolor:              rgba ( 0, 0, 0, 0 % );
+    
+    /* Global Settings */
+    font:                        "JetBrains Mono Nerd Font 11";
+    background-color:            transparent;
+    text-color:                  @foreground;
+    spacing:                     0;
+}
+
+window {
+    location:                    center;
+    anchor:                      center;
+    width:                       600px;
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     25px;
+    border:                      1px;
+    border-radius:               15px;
+    border-color:                @accent-color; /* Thin red-orange glow */
+    background-color:            @background;
+    cursor:                      "default";
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     15px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ];
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     12px;
+    border:                      1px;
+    border-radius:               10px;
+    border-color:                rgba ( 255, 120, 50, 40 % ); /* Orange accent border */
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  @accent-color; /* Red-Orange prompt */
+    font:                        "JetBrains Mono Nerd Font Bold 11";
+}
+
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search...";
+    placeholder-color:           rgba( 245, 225, 220, 30 % );
+}
+
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     8px;
+    margin:                      5px 0px 0px 0px;
+    padding:                     0px;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    spacing:                     15px;
+    margin:                      0px;
+    padding:                     10px;
+    border:                      0px;
+    border-radius:               8px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element selected.normal {
+    background-color:            @accent-color;
+    text-color:                  @selected-fg;
+}
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        32px;
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    highlight:                   inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+error-message {
+    padding:                     20px;
+    border:                      2px;
+    border-radius:               15px;
+    border-color:                @accent-color;
+    background-color:            @background;
+    text-color:                  @foreground;
+}

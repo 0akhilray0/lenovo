@@ -1,0 +1,29 @@
+akhil@ARCH ~/decorations (main)> git init
+Reinitialized existing Git repository in /home/akhil/decorations/.git/
+akhil@ARCH ~/decorations (main)> git add .
+akhil@ARCH ~/decorations (main)> git commit --amend -m "new wallpapers"
+[main 7882afe] new wallpapers
+ Date: Sat Feb 7 17:09:09 2026 +0530
+ 10 files changed, 1 insertion(+)
+ create mode 100644 README.md
+ create mode 100644 wallpaper/beserk.png
+ create mode 100644 wallpaper/car-with-full-moon-background.jpg
+ create mode 100644 wallpaper/fool.jpg
+ create mode 100644 wallpaper/green-ssword.jpg
+ create mode 100644 wallpaper/greenry.jpg
+ create mode 100644 wallpaper/red.png
+ create mode 100644 wallpaper/shaded.png
+ create mode 100755 wallpaper/vagabond-og.png
+ create mode 100644 wallpaper/whole-black.jpg
+akhil@ARCH ~/decorations (main)> git push origin main --force
+Username for 'https://github.com': 0akhilray0
+Password for 'https://0akhilray0@github.com':
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (13/13), 32.77 MiB | 1.58 MiB/s, done.
+Total 13 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/0akhilray0/decorations.git
+ + ec97061...7882afe main -> main (forced update)
+akhil@ARCH ~/decorations (main)>
