@@ -1,0 +1,76 @@
+/* ==========================================
+ * MINIMALIST POWER MENU TEMPLATE
+ * ========================================== */
+
+configuration {
+    me-accept-entry: "MousePrimary";
+    me-select-entry: ""; 
+}
+
+* {
+    font:             "JetBrainsMono Nerd Font 45";
+    background-color: transparent;
+    text-color:       {foreground};
+}
+
+window {
+    location:         center;
+    anchor:           center;
+    width:            450px;
+    
+    /* ADDED BORDERS HERE */
+    border:           2px;               
+    border-color:     {color2};          /* Uses your Pywal accent color */
+    
+    background-color: {background}66;    
+    border-radius:    0px;               /* Left exactly as you set it */
+    padding:          20px;
+}
+
+mainbox {
+    children:         [ "listview" ];
+}
+
+listview {
+    columns:          3;
+    lines:            1;
+    cycle:            true;
+    dynamic:          true;
+    scrollbar:        false;
+    layout:           vertical;
+    spacing:          15px;
+}
+
+element {
+    orientation:      vertical;
+    padding:          15px 0px;          
+    border-radius:    0px;               /* Left exactly as you set it */
+    
+    /* ADDED INVISIBLE BORDER FOR SPACING */
+    border:           2px;
+    border-color:     transparent;
+    
+    cursor:           pointer;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+    cursor:           inherit;
+    text-color:       inherit;
+}
+
+/* ==========================================
+ * HOVER & CLICK EFFECTS
+ * ========================================== */
+
+element hover {
+    background-color: {color8}40;
+    border-color:     {color2}80;        /* Subtle semi-transparent border on hover */
+}
+
+element selected.normal {
+    background-color: {color2}B3;        
+    text-color:       {background};
+    border-color:     {color2};          /* Solid accent border when selected */
+}

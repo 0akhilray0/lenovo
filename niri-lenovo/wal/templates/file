@@ -1,0 +1,82 @@
+# Yazi Pywal Template
+
+# : Manager [[[
+[mgr]
+cwd = { fg = "{color2}" }
+
+# Find
+find_keyword  = { fg = "{color1}", bold = true, italic = true, underline = true }
+find_position = { fg = "{color1}", bold = true, italic = true }
+
+# Marker
+marker_copied   = { fg = "{color2}", bg = "{color2}" }
+marker_cut      = { fg = "{color1}", bg = "{color1}" }
+marker_marked   = { fg = "{color6}", bg = "{color6}" }
+marker_selected = { fg = "{color4}", bg = "{color4}" }
+
+# Count
+count_copied   = { fg = "{background}", bg = "{color2}" }
+count_cut      = { fg = "{background}", bg = "{color1}" }
+count_selected = { fg = "{background}", bg = "{color4}" }
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "{color8}" }
+# : ]]]
+
+# : Tabs [[[
+[tabs]
+active    = { fg = "{background}", bg = "{color2}", bold = true }
+inactive  = { fg = "{foreground}", bg = "{color0}" }
+sep_inner = { open = " ", close = " " }
+# : ]]]
+
+# : Mode [[[
+[mode]
+normal_main = { bg = "{color2}", fg = "{background}", bold = true }
+normal_alt  = { bg = "{color0}", fg = "{color2}" }
+
+select_main = { bg = "{color4}", fg = "{background}", bold = true }
+select_alt  = { bg = "{color0}", fg = "{color4}" }
+
+unset_main = { bg = "{color1}", fg = "{background}", bold = true }
+unset_alt  = { bg = "{color0}", fg = "{color1}" }
+# : ]]]
+
+# : Status [[[
+[status]
+perm_type   = { fg = "{color6}" }
+perm_write  = { fg = "{color1}" }
+perm_read   = { fg = "{color2}" }
+perm_exec   = { fg = "{color4}" }
+perm_sep    = { fg = "{color8}" }
+
+progress_label  = { bold = true }
+progress_normal = { fg = "{color2}", bg = "{color0}" }
+progress_error  = { fg = "{color1}", bg = "{color0}" }
+# : ]]]
+
+# : File-specific styles [[[
+[filetype]
+rules = [
+    # Images
+    { mime = "image/*", fg = "{color6}" },
+
+    # Media
+    { mime = "{audio,video}/*", fg = "{color5}" },
+
+    # Archives
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "{color1}" },
+
+    # Documents
+    { mime = "application/{pdf,doc,rtf}", fg = "{color4}" },
+
+    # Special files
+    { name = "*", is = "orphan", bg = "{color1}", fg = "{background}" },
+    { name = "*", is = "exec", fg = "{color2}", bold = true },
+
+    # Fallback
+    { url = "*", fg = "{foreground}" },
+    { url = "*/", fg = "{color4}", bold = true },
+]
+# : ]]]

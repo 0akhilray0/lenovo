@@ -1,0 +1,54 @@
+* {
+    primary: #a1d39a;
+    primary-fixed: #bcf0b4;
+    primary-fixed-dim: #a1d39a;
+    on-primary: #0a390f;
+    on-primary-fixed: #002204;
+    on-primary-fixed-variant: #235024;
+    primary-container: #235024;
+    on-primary-container: #bcf0b4;
+    secondary: #baccb3;
+    secondary-fixed: #d5e8ce;
+    secondary-fixed-dim: #baccb3;
+    on-secondary: #253423;
+    on-secondary-fixed: #111f0f;
+    on-secondary-fixed-variant: #3b4b38;
+    secondary-container: #3b4b38;
+    on-secondary-container: #d5e8ce;
+    tertiary: #a0cfd4;
+    tertiary-fixed: #bcebf0;
+    tertiary-fixed-dim: #a0cfd4;
+    on-tertiary: #00363b;
+    on-tertiary-fixed: #002023;
+    on-tertiary-fixed-variant: #1f4d52;
+    tertiary-container: #1f4d52;
+    on-tertiary-container: #bcebf0;
+    error: #ffb4ab;
+    on-error: #690005;
+    error-container: #93000a;
+    on-error-container: #ffdad6;
+    surface: #10140f;
+    on-surface: #e0e4db;
+    on-surface-variant: #c2c9bd;
+    outline: #8c9388;
+    outline-variant: #424940;
+    shadow: #000000;
+    scrim: #000000;
+    inverse-surface: #e0e4db;
+    inverse-on-surface: #2d322c;
+    inverse-primary: #3b6939;
+    surface-dim: #10140f;
+    surface-bright: #363a34;
+    surface-container-lowest: #0b0f0a;
+    surface-container-low: #191d17;
+    surface-container: #1d211b;
+    surface-container-high: #272b25;
+    surface-container-highest: #323630;
+
+    /* --- THE GLASS FIX (Hex Opacity Suffixes) --- */
+    /* D9 = 85%, 73 = 45%, 4D = 30% */
+    bg-glass: #10140fD9;
+    bg-alt-glass: #42494073;
+    accent-glass: #a1d39aD9;
+    border-glass: #a1d39a4D;
+}

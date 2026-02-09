@@ -1,0 +1,74 @@
+# Pywal template for btop
+
+# Main background, empty for terminal default
+theme[main_bg]=""
+
+# Main text color
+theme[main_fg]="#c4c1c2"
+
+# Title color for boxes
+theme[title]="#D43845"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="#F2807F"
+
+# Background color of selected item in processes box
+theme[selected_bg]="#D43845"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#15090d"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#6c585e"
+
+# Misc colors for processes box
+theme[proc_misc]="#D8434C"
+
+# Box outline colors
+theme[cpu_box]="#6c585e"
+theme[mem_box]="#6c585e"
+theme[net_box]="#6c585e"
+theme[proc_box]="#6c585e"
+
+# Box divider line
+theme[div_line]="#6c585e"
+
+# Temperature graph colors
+theme[temp_start]="#961924"
+theme[temp_mid]="#AF2733"
+theme[temp_end]="#901925"
+
+# CPU graph colors
+theme[cpu_start]="#961924"
+theme[cpu_mid]="#AF2733"
+theme[cpu_end]="#901925"
+
+# Mem/Disk free meter
+theme[free_start]="#961924"
+theme[free_mid]=""
+theme[free_end]="#961924"
+
+# Mem/Disk cached meter
+theme[cached_start]="#D8434C"
+theme[cached_mid]=""
+theme[cached_end]="#D8434C"
+
+# Mem/Disk available meter
+theme[available_start]="#D43845"
+theme[available_mid]=""
+theme[available_end]="#D43845"
+
+# Mem/Disk used meter
+theme[used_start]="#901925"
+theme[used_mid]=""
+theme[used_end]="#901925"
+
+# Download graph colors
+theme[download_start]="#961924"
+theme[download_mid]="#D43845"
+theme[download_end]="#F2807F"
+
+# Upload graph colors
+theme[upload_start]="#961924"
+theme[upload_mid]="#D43845"
+theme[upload_end]="#F2807F"
