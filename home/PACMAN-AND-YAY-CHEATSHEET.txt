@@ -1,0 +1,34 @@
+=========================================
+ARCH LINUX PACKAGE MANAGER CHEAT SHEET
+=========================================
+
+--- PACMAN (Official Repos) ---
+Update System:          sudo pacman -Syu
+Install Package:        sudo pacman -S <pkg_name>
+Remove (with deps):     sudo pacman -Rns <pkg_name>
+Search Repo:            pacman -Ss <keyword>
+Search Installed:       pacman -Qs <keyword>
+Package Info:           pacman -Qi <pkg_name>
+List Explicit Apps:     pacman -Qe
+List Orphans:           pacman -Qdt
+Remove All Orphans:     sudo pacman -Rns $(pacman -Qdtq)
+Clean Cache (Safe):     sudo paccache -r
+Clean Cache (All):      sudo pacman -Scc
+
+
+--- YAY (Official + AUR) ---
+Update Everything:      yay
+Install Package:        yay -S <pkg_name>
+Remove Package:         yay -Rns <pkg_name>
+Interactive Search:     yay <keyword>
+Remove Orphans:         yay -Yc
+AUR Updates Only:       yay -Sua
+Show System Stats:      yay -Ps
+Print PKGBUILD:         yay -Gp <pkg_name>
+
+
+--- MAINTENANCE TIPS ---
+1. Always use -Rns to remove apps to prevent orphan buildup.
+2. Run 'yay -Yc' once a week to keep the system lean.
+3. Check 'pacman -Qe' to see if you have apps you no longer use.
+=========================================

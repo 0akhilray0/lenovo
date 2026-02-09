@@ -1,0 +1,204 @@
+/* ============================================================================== */
+/* ======================== ⚙️ MASTER SETTINGS ⚙️ ============================ */
+/* ============================================================================== */
+
+/* ONLY CHANGE THIS BACKGROUND COLOR.
+   The last number (0.6) is the transparency.
+   0.0 = Invisible Glass
+   1.0 = Solid Black
+*/
+@define-color glass-bg rgba(10, 10, 10, 0.2);
+
+/* ============================================================================== */
+
+/* ================= GLOBAL RESET ================= */
+
+window#waybar {
+    background-color: transparent;
+    color: #d3c6aa;
+}
+
+* {
+    border: none;
+    border-radius: 5px;
+    font-family: "Fira Code Regular";
+    font-size: 13px;
+    font-weight: 700; /* Bold text for readability */
+    min-height: 0;
+    
+    /* CRITICAL: This ensures text is ALWAYS solid and readable */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* ================= WORKSPACES ================= */
+
+#workspaces {
+    background-color: transparent;
+    margin: 2px 0;
+}
+
+#workspaces button {
+    /* Glass background */
+    background-color: @glass-bg;
+    color: #d3c6aa; /* Solid Text */
+    border-radius: 1px;
+    margin: 0 3px;
+    padding: 0 6px;
+    
+    /* Solid Border (Greyish) */
+    border: 2px solid #505050; 
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background-color: #d3c6aa; /* Solid fill on hover */
+    color: #2d353b;            /* Dark text */
+    border-color: #d3c6aa;
+    text-shadow: none;
+}
+
+/* FIXED: ACTIVE WORKSPACE LOOKS CLEANER NOW */
+#workspaces button.active {
+    background-color: rgba(45, 53, 59, 0.9); /* Slightly solid, not fully black */
+    color: #a7c080;       /* Green Text */
+    border: 2px solid #a7c080; /* Solid Green Border */
+    box-shadow: 0 0 5px rgba(167, 192, 128, 0.2); /* Subtle glow */
+}
+
+#workspaces button.urgent {
+    background-color: rgba(230, 126, 128, 0.8);
+    color: #232a2e;
+    border: 2px solid #e67e80;
+}
+
+/* ================= MODULES (Clock, Battery, etc.) ================= */
+
+#custom-weather,
+#custom-quote,
+#window,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#network,
+#pulseaudio,
+#backlight,
+#disk,
+#custom-updates,
+#tray,
+#clock {
+    background-color: @glass-bg; /* Transparent Background */
+    color: #d3c6aa;              /* SOLID Text */
+    border-radius: 1px;
+    padding: 2px 10px;
+    margin: 2px 0px;
+    
+    /* Solid Grey Border */
+    border: 2px solid #505050; 
+    transition: background-color 0.2s;
+}
+
+/* Hover Effect: Turns slightly lighter grey */
+#custom-weather:hover,
+#custom-quote:hover,
+#window:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#battery:hover,
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#disk:hover,
+#custom-updates:hover,
+#clock:hover {
+    background-color: rgba(60, 60, 60, 0.8);
+}
+
+/* ================= SPECIFIC BORDER COLORS ================= */
+/* Text and Borders match color. Background stays Glass. */
+
+#cpu { border-color: #a7c080; color: #a7c080; }
+#memory { border-color: #d699b6; color: #d699b6; }
+#disk { border-color: #83c092; color: #83c092; }
+#temperature { border-color: #dbbc7f; color: #dbbc7f; }
+
+#temperature.critical { 
+    background-color: rgba(230, 126, 128, 0.8);
+    border-color: #e67e80;
+    color: #232a2e;
+}
+
+#battery { border-color: #7fbbb3; color: #7fbbb3; }
+#battery.charging { border-color: #a7c080; color: #a7c080; }
+#battery.warning { border-color: #dbbc7f; color: #dbbc7f; }
+#battery.critical { 
+    background-color: rgba(230, 126, 128, 0.8);
+    border-color: #e67e80; 
+    color: #e67e80; 
+}
+
+#network { border-color: #e69875; color: #e69875; }
+#network.disconnected { 
+    background-color: rgba(230, 126, 128, 0.8);
+    border-color: #e67e80; 
+    color: #232a2e;
+}
+
+#pulseaudio { border-color: #7fbbb3; color: #7fbbb3; }
+#pulseaudio.muted { border-color: #e67e80; color: #e67e80; }
+
+#backlight { border-color: #dbbc7f; color: #dbbc7f; }
+
+#clock { 
+    color: #7fbbb3; 
+    border-color: #7fbbb3;
+    font-weight: 800;
+}
+
+#custom-updates { border-color: #e67e80; color: #e67e80; }
+
+#tray {
+    padding: 0 10px;
+    background-color: @glass-bg;
+    border: 2px solid #505050;
+}
+
+/* ================= CENTER PART (Window Title) ================= */
+
+#window {
+    border-color: #d699b6;
+    color: #d3c6aa;
+    min-width: 30px;
+}
+
+window#waybar.empty #window {
+    background-color: @glass-bg;
+    border-color: #505050;
+}
+
+/* ================= DRAWERS & BUTTONS ================= */
+
+#custom-nightmode-main, #custom-nightmode-off, 
+#custom-nightmode-1, #custom-nightmode-2, #custom-nightmode-3, 
+#custom-nightmode-4, #custom-nightmode-5, #custom-nightmode-6, 
+#custom-power, #custom-quit, #custom-reboot {
+    background-color: @glass-bg;
+    border-radius: 1px;
+    margin: 2px 0px 2px 5px;
+    padding: 2px 10px;
+    transition: background-color 0.2s;
+}
+
+#custom-nightmode-main { border: 2px solid #e69875; color: #e69875; }
+#custom-nightmode-off { border: 2px solid #7fbbb3; color: #7fbbb3; }
+#custom-nightmode-1 { border: 2px solid #7fbbb3; color: #7fbbb3; }
+#custom-nightmode-2 { border: 2px solid #83c092; color: #83c092; }
+#custom-nightmode-3 { border: 2px solid #a7c080; color: #a7c080; }
+#custom-nightmode-4 { border: 2px solid #dbbc7f; color: #dbbc7f; }
+#custom-nightmode-5 { border: 2px solid #e69875; color: #e69875; }
+#custom-nightmode-6 { border: 2px solid #e67e80; color: #e67e80; }
+
+#custom-power { border: 2px solid #e67e80; color: #e67e80; }
+#custom-quit { border: 2px solid #7fbbb3; color: #7fbbb3; }
+#custom-reboot { border: 2px solid #dbbc7f; color: #dbbc7f; }

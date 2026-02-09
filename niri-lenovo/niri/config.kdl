@@ -1,0 +1,490 @@
+// ╭─────────────────────────────────────────────────────────╮
+// │  NIRI CONFIGURATION FILE                                │
+// │  Configured for: Lenovo IdeaPad D330                    │
+// ╰─────────────────────────────────────────────────────────╯
+
+// ┌─────────────────────────────────────────────────────────┐
+// │  SECTION 1: INPUT DEVICES & POWER                       │
+// └─────────────────────────────────────────────────────────┘
+input {
+    keyboard {
+        xkb {
+            // You can set rules, model, layout, variant and options.
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        // dwt (disable-while-typing) is enabled by default
+    }
+
+    mouse {
+        // off
+    }
+
+    trackpoint {
+        // off
+    }
+
+    // [POWER SETTINGS]
+    disable-power-key-handling
+
+    // [MOUSE FOCUS BEHAVIOR]
+    // warp-mouse-to-focus
+    // focus-follows-mouse max-scroll-amount="0%"
+}
+
+// ┌─────────────────────────────────────────────────────────┐
+// │  SECTION 2: OUTPUTS (MONITORS)                          │
+// └─────────────────────────────────────────────────────────┘
+output "DSI-1" {
+    // Resolution and refresh rate
+    mode "800x1280@60"
+
+    // Scale
+    scale 1
+
+    // Transform (Rotation)
+    transform "normal"
+
+    // Position
+    position x=0 y=0
+}
+
+// ┌─────────────────────────────────────────────────────────┐
+// │  SECTION 3: LAYOUT & APPEARANCE                         │
+// └─────────────────────────────────────────────────────────┘
+// Make the wallpaper stationary.
+layer-rule {
+    match namespace="swww-daemon"
+    place-within-backdrop true
+}
+
+// Overview Settings
+overview {
+    workspace-shadow {
+        // off
+    }
+}
+
+layout {
+    // Set transparent workspace background color.
+    background-color "transparent"
+
+    // Set gaps around windows in logical pixels.
+    gaps 10
+
+    // Center the focused column only if it overflows.
+    center-focused-column "on-overflow"
+
+    // Standard column widths (1/3, 1/2, 2/3)
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    // Default width for new windows.
+    default-column-width { proportion 0.5; }
+
+    // [FOCUS RING] - Border around the ACTIVE window.
+    focus-ring {
+        width 2
+        active-color "#8B0000"
+        inactive-color "#505050"
+    }
+
+    // [BORDER] - Border around ALL windows (Disabled).
+    border {
+        off
+        width 4
+        active-color "#ffc87f"
+        inactive-color "#505050"
+        urgent-color "#9b0000"
+    }
+
+    // [SHADOWS]
+    shadow {
+        // on
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+
+    // [STRUTS] - Reserve space for panels.
+    struts {
+        // left 64
+        // right 64
+        // top 64
+        // bottom 64
+    }
+}
+
+// ┌─────────────────────────────────────────────────────────┐
+// │  SECTION 4: STARTUP & AUTOSTART                         │
+// └─────────────────────────────────────────────────────────┘
+// Start Waybar
+spawn-at-startup "waybar"
+
+// Start Wallpaper
+spawn-at-startup "waypaper" "--restore"
+
+// CRITICAL: Systemd/DBus integration
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+spawn-at-startup "systemctl" "--user" "import-environment" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+
+// Hotkey Overlay Configuration
+hotkey-overlay {
+    skip-at-startup
+}
+
+// [STABILITY] Prefer Server-Side Decorations
+// This forces Niri to draw borders, reducing glitches from apps drawing their own.
+prefer-no-csd
+
+// Screenshot Location
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+
+
+// ┌─────────────────────────────────────────────────────────┐
+// │  SECTION 5: ANIMATIONS                                  │
+// └─────────────────────────────────────────────────────────┘
+animations {
+    // [THE BIG ONE] - Master Speed Multiplier
+    // 1.0 = Normal speed. 
+    // 2.0 = Half speed (Slow motion). 
+    // 0.5 = Double speed (Fast).
+    slowdown 1
+
+    // Workspace Switching (Moving between desktops)
+    workspace-switch {
+        duration-ms 700
+        curve "ease-out-cubic"
+    }
+
+    // Window Opening (The "Pop in" effect)
+    window-open {
+        duration-ms 1200
+        curve "ease-out-expo"
+    }
+
+    // Window Closing
+    window-close {
+        duration-ms 900
+        curve "ease-out-quad"
+    }
+
+    // Moving the view left/right
+    horizontal-view-movement {
+        duration-ms 900
+        curve "ease-out-cubic"
+    }
+
+    // Moving a window to a new spot
+    window-movement {
+        duration-ms 700
+        curve "ease-out-cubic"
+    }
+
+    // Resizing a window
+    window-resize {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+
+    // Config Reload Notification
+    config-notification-open-close {
+        duration-ms 300
+        curve "ease-out-quad"
+    }
+
+    // Exit Confirmation Dialog
+    exit-confirmation-open-close {
+        duration-ms 300
+        curve "ease-out-quad"
+    }
+
+    // Screenshot UI
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+
+    // Overview (Mod+O)
+    overview-open-close {
+        duration-ms 400
+        curve "ease-out-cubic"
+    }
+
+    // Recent Windows Overlay (Alt+Tab)
+    recent-windows-close {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+}
+
+
+// ┌─────────────────────────────────────────────────────────┐
+// │  SECTION 6: WINDOW RULES                                │
+// └─────────────────────────────────────────────────────────┘
+
+// [Transparency: Inactive Windows]
+window-rule {
+    opacity 0.7
+}
+
+// [Transparency: Active Window]
+window-rule {
+    match is-active=true
+    opacity 1.0
+}
+
+// [Firefox PiP]
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// [FIX FOR GHOSTTY RED TINT / TRANSPARENCY]
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+    draw-border-with-background false
+}
+
+// [WezTerm Fix]
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
+// [ADDED] Force EVERY window to open maximized automatically (Tablet Mode)
+window-rule {
+    open-maximized false
+}
+
+// Browser open always in full screen.
+window-rule {
+    match app-id="firefox"
+    open-maximized true
+}
+
+// Opening File Manager.
+window-rule {
+    match title="YAZI"
+    open-maximized true
+}
+
+// Opening Flowkeeper.
+window-rule {
+    match title="Flowkeeper"
+    open-fullscreen true
+}
+
+// Opening Task Manager.
+window-rule {
+    match title="TASK-MANAGER"
+    open-maximized true
+}
+
+// [RECENT WINDOWS SWITCHER]
+recent-windows {
+    debounce-ms 750
+    open-delay-ms 150
+
+    highlight {
+        active-color "#999999ff"
+        urgent-color "#ff9999ff"
+        padding 30
+        corner-radius 0
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab { next-window; }
+    }
+}
+
+// ┌─────────────────────────────────────────────────────────┐
+// │  SECTION 7: KEY BINDS                                   │
+// └─────────────────────────────────────────────────────────┘
+binds {
+    // [HELP]
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // [LAUNCHERS]
+    Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
+    Ctrl+Space hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun" "-show-icons" ; }
+    
+    // BROWSER BIND
+    Mod+B hotkey-overlay-title="Open Browser: Firefox" { spawn "firefox"; }
+
+    // LAUNCHING FILE MANAGER
+    Mod+E hotkey-overlay-title="Open FileManager: yazi" {spawn "ghostty" "--title=YAZI" "-e" "yazi";}
+
+    // LAUNCHING THE TASK MANAGER
+    Ctrl+Shift+Escape hotkey-overlay-title="Open TaskManager: btop" {spawn "ghostty" "--title=TASK-MANAGER" "-e" "btop";}
+
+    // [SYSTEM CONTROLS]
+    // WAYBAR REFRESH
+    Mod+Shift+Q hotkey-overlay-title="Reload waybar" { spawn "/home/akhil/.config/waybar/scripts/reload.sh"; }
+
+    // [FIXED] Grim + Slurp + Clipboard (Added --type image/png)
+    Mod+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp)\" - | tee ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png | wl-copy --type image/png"; }
+
+    // [AUDIO & BRIGHTNESS]
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "1%+"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "1%-"; }
+
+    // [WINDOW MANAGEMENT]
+    Mod+O repeat=false { toggle-overview; }
+    Mod+Q repeat=false { close-window; }
+
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+
+    Mod+Ctrl+Left  { move-column-left; }
+    Mod+Ctrl+Down  { move-window-down; }
+    Mod+Ctrl+Up    { move-window-up; }
+    Mod+Ctrl+Right { move-column-right; }
+    Mod+Shift+H    { move-column-left; }
+    Mod+Shift+J    { move-window-down; }
+    Mod+Shift+K    { move-window-up; }
+    Mod+Shift+L    { move-column-right; }
+
+    Mod+Home      { focus-column-first; }
+    Mod+End       { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    // [WORKSPACE NAVIGATION]
+    Mod+Page_Down      { focus-workspace-down; }
+    Mod+Page_Up        { focus-workspace-up; }
+    Mod+U              { focus-workspace-down; }
+    Mod+I              { focus-workspace-up; }
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
+
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+U         { move-workspace-down; }
+    Mod+Shift+I         { move-workspace-up; }
+
+    // Mouse Wheel Bindings
+    Mod+Shift+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+Shift+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown  cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp    cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    Mod+WheelScrollDown            { focus-column-right; }
+    Mod+WheelScrollUp              { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    // [NUMERICAL WORKSPACES]
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+    // [RESIZING & LAYOUT]
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+C { center-column; }
+    Mod+Ctrl+C { center-visible-columns; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // Floating / Tiling / Tabs
+    Mod+T       { toggle-window-floating; }
+    Mod+Shift+T { switch-focus-between-floating-and-tiling; }
+    Mod+W       { toggle-column-tabbed-display; }
+
+    // [ESCAPE HATCH]
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // [POWER & SESSION]
+    // The Hyprland-style logout (now safe because of the fix above)
+    Mod+Shift+X hotkey-overlay-title="Logout" { spawn "loginctl" "terminate-user" "akhil"; }
+
+    // Shutdown with Mod + Shift + P
+    Ctrl+Alt+S { spawn "systemctl" "poweroff"; }
+    
+    // Reboot with Mod + Shift + R (Optional)
+    Ctrl+Alt+R { spawn "systemctl" "reboot"; }
+
+    // Reboot into BIOS/UEFI Firmware Settings
+    Ctrl+Alt+F { spawn "systemctl" "reboot" "--firmware-setup"; }
+
+    // LOGOUT MY STYLE
+    // Powers off the monitors. To turn them back on, do any input like
+    // moving the mouse or pressing any other key.
+    Mod+Shift+P { power-off-monitors; }
+}
+
+// ┌─────────────────────────────────────────────────────────┐
+// │  SECTION 8: DEBUG & STABILITY                           │
+// └─────────────────────────────────────────────────────────┘
+debug {
+    // FIX FOR GLITCHES ON INTEL GPU
+    // Disables direct scanout to prevent tearing/flickering on rotated screens
+    disable-direct-scanout
+}

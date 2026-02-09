@@ -1,0 +1,91 @@
+/************************************************
+ * SIMPLE BIG IMAGE SPLIT
+ * stable — no weird widgets
+ ************************************************/
+
+*{
+    bg: rgba(20,15,15,0.93);
+    bg-alt: rgba(35,25,25,0.85);
+    fg: rgba(245,225,220,1);
+    accent: rgba(225,75,50,1);
+
+    background-color: transparent;
+    text-color: @fg;
+}
+
+/******** WINDOW ********/
+
+window{
+    width: 1100px;
+    height: 650px;
+
+    border: 2px;
+    border-radius: 16px;
+    border-color: @accent;
+
+    background-color: @bg;
+}
+
+/******** MAIN LAYOUT ********/
+
+mainbox{
+    orientation: vertical;
+    spacing: 15px;
+    padding: 20px;
+}
+
+/******** SEARCH ********/
+
+inputbar{
+    padding: 12px;
+    border-radius: 10px;
+    background-color: @bg-alt;
+
+    children: [ prompt, entry ];
+}
+
+prompt{
+    text-color: @accent;
+}
+
+/******** LIST ********/
+
+listview{
+    columns: 1;
+    lines: 6;              /* keeps rows tall for big image */
+    spacing: 12;
+    scrollbar: true;
+}
+
+/******** ROW ********/
+
+element{
+    orientation: horizontal;
+
+    padding: 12px;
+    spacing: 18;
+
+    border-radius: 12px;
+}
+
+/* BIG poster */
+element-icon{
+    size: 220px;
+    border-radius: 8px;
+}
+
+/* FULL text */
+element-text{
+    vertical-align: 0.5;
+    expand: true;
+}
+
+/******** SELECT ********/
+
+element selected.normal{
+    background-color: rgba(225,75,50,0.22);
+    border: 1px;
+    border-color: @accent;
+    text-color: @accent;
+}
+
