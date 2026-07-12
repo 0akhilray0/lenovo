@@ -331,7 +331,7 @@ binds {
     // [LAUNCHERS]
     Mod+Return hotkey-overlay-title="Open a Terminal: " { spawn "kitty"; }
 
-    Ctrl+Space hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun" "-show-icons" ; }
+    alt+Space hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun" "-show-icons" ; }
 
     Mod+W hotkey-overlay-title="Run an Application: rofi" { spawn  "bash" "/home/akhil/.config/rofi/wallpaper.sh" ; }
     
@@ -477,7 +477,7 @@ binds {
 
     // [POWER & SESSION]
     // The Hyprland-style logout (now safe because of the fix above)
-    Mod+Shift+X hotkey-overlay-title="Logout" { spawn "loginctl" "terminate-user" "akhil"; }
+    Mod+Shift+X hotkey-overlay-title="Logout" { spawn "niri" "msg" "action" "quit" ; }
 
     // Shutdown with Mod + Shift + P
     Ctrl+Alt+S { spawn "systemctl" "poweroff"; }
