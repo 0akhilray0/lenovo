@@ -33,6 +33,6 @@ case "$chosen" in
         systemctl reboot
         ;;
     "$LOGOUT")
-        loginctl terminate-user akhil
+        niri msg action quit
         ;;
 esac
