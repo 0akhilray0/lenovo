@@ -1,0 +1,101 @@
+configuration {
+    show-icons:                  true;
+}
+
+* {
+    /* Base settings */
+    font:                        "JetBrainsMono Nerd Font 12";
+    background-color:            transparent;
+    text-color:                  {foreground};
+    margin:                      0;
+    padding:                     0;
+}
+
+window {
+    location:                    center;
+    anchor:                      center;
+    width:                       95%;    /* 40% of your screen width */
+    height:                      53%;   /* 50% of your screen height */
+    border:                      1px;
+    border-radius:               0px;
+    border-color:                {color2}; 
+    background-color:            {background}A6; /* A6 gives you that dark glass effect */
+    padding:                     5px;
+}
+
+mainbox {
+    spacing:                     5px;
+    children:                    [ "inputbar", "listview" ];
+}
+
+inputbar {
+    spacing:                     5px;
+    padding:                     5px;
+    background-color:            {background}80; /* Slightly more transparent than the main window */
+    border:                      1px;
+    border-color:                {color2};
+    border-radius:               1px;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    text-color:                  {color2}; 
+    font:                        "JetBrainsMono Nerd Font Bold 12";
+}
+
+entry {
+    text-color:                  {foreground};
+    placeholder:                 ".................";
+    placeholder-color:           {color8};
+    cursor:                      text;
+}
+
+/* ================= SINGLE COLUMN SCROLLABLE LIST ================= */
+listview {
+    columns:                     4; 
+    lines:                       3; 
+    spacing:                     10px;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   true; 
+    layout:                      vertical;
+    fixed-columns:               true;
+    fixed-height:                true;
+}
+
+element {
+    orientation:                 vertical; 
+    spacing:                     5px;      
+    padding:                     6px;      
+    border-radius:               1px;
+    cursor:                      pointer;
+    border:                      1px;
+    border-color:                transparent;
+}
+
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  {foreground};
+}
+
+/* Glowing selection box for the image you hover over */
+element selected.normal {
+    background-color:            {color2}99; /* Semi-transparent accent color */
+    text-color:                  {background};
+    border-color:                {color2};
+}
+
+element-icon {
+    size:                        40%; 
+    cursor:                      inherit;
+    vertical-align:              2;   
+    horizontal-align:            1;   
+}
+
+element-text {
+    vertical-align:              0.5;   
+    horizontal-align:            0.5;   
+    text-color:                  inherit;
+    cursor:                      inherit;
+    font:                        "JetBrainsMono Nerd Font Bold 13";
+}

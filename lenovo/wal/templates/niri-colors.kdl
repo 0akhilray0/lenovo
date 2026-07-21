@@ -1,0 +1,27 @@
+layout {
+    focus-ring {
+        active-color "{color2}"
+        inactive-color "{color8}"
+        urgent-color   "{color1}"
+    }
+
+    border {
+        active-color   "{color2}"
+        inactive-color "{color8}"
+        urgent-color   "{color1}"
+    }
+
+    shadow {
+        color "{color0}70"
+    }
+
+    tab-indicator {
+        active-color   "{color2}"
+        inactive-color "{color8}"
+        urgent-color   "{color1}"
+    }
+
+    insert-hint {
+        color "{color2}80"
+    }
+}

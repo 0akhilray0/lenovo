@@ -95,7 +95,7 @@ layout {
 
     // [FOCUS RING] - Border around the ACTIVE window.
     focus-ring {
-        width 2
+        width 1
         // Colors removed: handled by colors.kdl
     }
 
@@ -136,7 +136,6 @@ spawn-at-startup "swaync"
 // Start Wallpaper (awww instead of waypaper)
 spawn-at-startup "awww-daemon"
 
-
 // CRITICAL: Systemd/DBus integration
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
 spawn-at-startup "systemctl" "--user" "import-environment" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
@@ -145,8 +144,8 @@ spawn-at-startup "systemctl" "--user" "import-environment" "WAYLAND_DISPLAY" "XD
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 
-//Start brave At startup Of PC
-//spawn-at-startup "brave"
+//Start brave-origin At startup Of PC
+//spawn-at-startup "brave-origin"
 // Hotkey Overlay Configuration
 hotkey-overlay {
     skip-at-startup
@@ -254,17 +253,21 @@ window-rule {
     opacity 1.0
 }
 
-
-
-
 // [ADDED] Force EVERY window to open maximized automatically (Tablet Mode)
 window-rule {
-    open-maximized false
+    match app-id="GeForce Infinity"
+    open-maximized true
 }
 
 // Browser open always in full screen.
 window-rule {
-    match app-id="brave"
+    match app-id="brave-origin"
+    open-maximized true
+}
+
+// Browser open always in full screen.
+window-rule {
+    match app-id="steam"
     open-maximized true
 }
 
@@ -298,6 +301,12 @@ window-rule {
     open-maximized true
 }
 
+// Opening Task Manager.
+window-rule {
+    match title="VISUALIZER"
+    open-maximized true
+}
+
 // [RECENT WINDOWS SWITCHER]
 recent-windows {
     debounce-ms 750
@@ -327,7 +336,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // [LAUNCHERS]
-    Mod+Return hotkey-overlay-title="Open a Terminal: " { spawn "kitty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: " { spawn "foot"; }
 
     alt+Space hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun" "-show-icons" ; }
 
@@ -336,13 +345,18 @@ binds {
     Ctrl+Alt+Delete hotkey-overlay-title="System Power Menu" { spawn "bash" "/home/akhil/.config/rofi/powermenu.sh" ; } 
 
     // BROWSER BIND
-    Mod+B hotkey-overlay-title="Open Browser: brave" { spawn "brave"; }
+    Mod+B hotkey-overlay-title="Open Browser: brave-origin" { spawn "brave-origin"; }
 
     // LAUNCHING FILE MANAGER
-    Mod+E hotkey-overlay-title="Open FileManager: yazi" {spawn "kitty" "--title=YAZI" "-e" "yazi";}
+    Mod+E hotkey-overlay-title="Open FileManager: yazi" {spawn "foot" "--title=YAZI" "-e" "yazi";}
 
     // LAUNCHING THE TASK MANAGER
-    Ctrl+Shift+Escape hotkey-overlay-title="Open TaskManager: btop" {spawn "kitty" "--title=TASK-MANAGER" "-e" "btop";}
+    Ctrl+Shift+Escape hotkey-overlay-title="Open TaskManager: btop" {spawn "foot" "--title=TASK-MANAGER" "-e" "btop";}
+
+    // LAUNCHING THE audio visualizer
+    Mod+Shift+C hotkey-overlay-title="Open VISUALIZER: cava" {spawn "foot" "--title=VISUALIZER" "-e" "cava";}
+
+
 
     // [SYSTEM CONTROLS]
     // WAYBAR REFRESH

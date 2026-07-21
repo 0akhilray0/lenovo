@@ -40,7 +40,7 @@ alias cls='clear'
 
 # Boot into Windows on next reboot
 # Uses efibootmgr to set Windows (0001) as next boot entry, then reboots
-alias windows='sudo efibootmgr -n 0001; sudo reboot'
+alias windows='sudo efibootmgr -n 0002; sudo reboot'
 
 
 # ======================================================================================
@@ -73,6 +73,22 @@ alias fishc='nvim ~/.config/fish/config.fish'
 ## EDITING NIRI CONFIG SHORTCUT
 
 alias niric='nvim ~/.config/niri/config.kdl'
+
+#YouTube Shell Application
+
+alias yu='python lenovo/home/YOUTUBE-APPLICATION.py'
+
+
+# ======================================================================================
+# PACMAN SHORTCUTS 
+# ======================================================================================
+alias u='sudo pacman -Syu'
+alias s='yay -Ss'
+alias info='yay -Qs'
+alias i='sudo pacman -S'
+alias remove='yay -R'
+alias install='yay -S'
+
 
 
 # ======================================================================================
@@ -124,6 +140,8 @@ function y
     # Clean up temporary file
     rm -f -- "$tmp"
 end
+
+
 
 
 # #######################################################################################

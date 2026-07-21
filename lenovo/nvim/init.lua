@@ -61,3 +61,47 @@ vim.keymap.set("n", "<leader>v", '"+p')          -- paste from system
 -- END
 -- =========================
 
+-- =========================
+-- TRANSPARENCY TOGGLE
+-- =========================
+
+-- Function to strip background colors from Neovim
+local function set_transparency()
+    local groups = {
+        "Normal", "NormalNC", "SignColumn", "LineNr", 
+        "EndOfBuffer", "NormalFloat", "FloatBorder",
+    }
+    for _, group in ipairs(groups) do
+        vim.api.nvim_set_hl(0, group, { bg = "none" })
+    end
+end
+
+-- 1. SET IT TO TRUE BY DEFAULT
+vim.g.is_transparent = true
+
+-- 2. APPLY IT IMMEDIATELY
+set_transparency()
+
+-- 3. KEEP IT TRANSPARENT EVEN IF A THEME LOADS
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+        if vim.g.is_transparent then
+            set_transparency()
+        end
+    end,
+})
+
+-- Keybind to toggle transparency (<leader>t)
+vim.keymap.set("n", "<leader>t", function()
+    if vim.g.is_transparent then
+        -- IMPORTANT: Change "default" to your actual theme (e.g., "tokyonight")
+        vim.cmd("colorscheme default") 
+        vim.g.is_transparent = false
+        print("Transparency: OFF")
+    else
+        set_transparency()
+        vim.g.is_transparent = true
+        print("Transparency: ON")
+    end
+end, { desc = "Toggle Transparency" })

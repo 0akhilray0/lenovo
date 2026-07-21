@@ -5,7 +5,7 @@
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
        "logo": {
     	"source": "/home/akhil/.config/fastfetch/images-pngs/pusheen.png",
-    	"type": "kitty",
+    	"type": "sixel",
     	"height": 22,
     	"padding": {
     		"top": 2

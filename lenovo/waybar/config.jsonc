@@ -2,15 +2,18 @@
     "layer": "top",
     "position": "top",
     "height": 25,
-    "spacing": 4,
-    "margin-top": 2,
-    "margin-bottom": 0,
+    "spacing": 2,
+    "margin-top": 1,
+    "margin-bottom": 2,
     "margin-left": 5,
     "margin-right": 5,
 
-    "modules-left": ["hyprland/workspaces"],
+    "modules-left": ["niri/workspaces","niri/window"],
+
     "modules-center": [],
+
     "modules-right": [
+        "custom/pomodoro",
         "pulseaudio",
         "backlight",
         "group/nightmode",
@@ -24,32 +27,52 @@
         "group/power"
     ],
 
-    "hyprland/workspaces": {
-        "format": "{name}",
+    "custom/pomodoro": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "/home/akhil/.config/waybar/POMODORO/pomodoro -w 45 -s 10 -l 15 --autow",
+        "on-click": "/home/akhil/.config/waybar/POMODORO/pomodoro toggle",
+        "on-click-right": "~/.local/bin/pomodoro reset"
+    },
+
+    "niri/workspaces": {
+        "format": "{icon}",
         "on-click": "activate",
         "all-outputs": true,
         "persistent-workspaces": {
-            "*": 2
+            "*": 0
+        },
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "default": "" 
         }
     },
 
-    "hyprland/window": {
-        "format": "{}",
-        "max-length": 40,
-        "separate-outputs": true,
-        "rewrite": {
-            "(.*) — Mozilla Firefox": "Firefox 󰈹",
-            "(.*) - Google Chrome": "Chrome ",
-            "(.*) - Ghostty": "Ghostty ",
-            "(.*) - Thunar": "Files "
-        }
+    "niri/window": {
+    "format": "{}",
+    "max-length": 80,
+    "separate-outputs": true,
+    "rewrite": {
+        "(.*) — Mozilla Firefox": "󰈹 $1",
+        "(.*) - Mozilla Firefox": "󰈹 $1",
+        "(.*) - kitty": " $1",
+        "(.*) - Yazi": " $1"
+       }
     },
-
+ 
     "custom/updates": {
         "format": "󰚰 {}",
         "exec": "checkupdates | wc -l",
         "interval": 3600,
-        "on-click": "ghostty -e sudo pacman -Syu",
+        "on-click": "kitty -e sudo pacman -Syu",
         "signal": 8
     },
 
@@ -63,7 +86,7 @@
         "format": "󰻠 {usage}%",
         "format-alt": "󰻠 {avg_frequency} GHz",
         "interval": 2,
-        "on-click": "ghostty -e btop",
+        "on-click": "kitty -e btop",
         "tooltip-format": "CPU Usage: {usage}%\nFrequency: {avg_frequency} GHz"
     },
 
@@ -71,7 +94,7 @@
         "format": "󰍛 {used:0.1f}G",
         "format-alt": "󰍛 {percentage}%",
         "interval": 2,
-        "on-click": "ghostty -e btop",
+        "on-click": "kitty -e btop",
         "tooltip-format": "RAM: {used:0.1f}GB / {total:0.1f}GB\nUsage: {percentage}%"
     },
 
@@ -79,7 +102,7 @@
         "critical-threshold": 80,
         "format": "{icon} {temperatureC}°C",
         "format-icons": ["󱃃", "󰔏", "󱃂"],
-        "on-click": "ghostty -e s-tui"
+        "on-click": "kitty -e s-tui"
     },
 
     "battery": {
@@ -96,7 +119,7 @@
         "format-ethernet": "󰈀 Connected",
         "format-disconnected": "󰖪 Offline",
         "format-alt": "󰩟 {ipaddr}",
-        "on-click": "ghostty -e nmtui",
+        "on-click": "kitty -e nmtui",
         "tooltip-format-wifi": "SSID: {essid}\nSignal: {signalStrength}%\nIP: {ipaddr}",
         "tooltip-format-ethernet": "Connection: {ifname}\nIP: {ipaddr}"
     },
@@ -148,49 +171,49 @@
         "format": "󰖨",
         "tooltip": true,
         "tooltip-format": "Turn Off Night Mode",
-        "on-click": "killall -9 hyprsunset"
+        "on-click": "pkill -9 gammastep"
     },
 
     "custom/nightmode-1": {
         "format": "󰛨",
         "tooltip": true,
         "tooltip-format": "Daylight (6500K)",
-        "on-click": "killall -9 hyprsunset; hyprsunset --temperature 6500 &"
+        "on-click": "pkill gammastep; gammastep -O 6500"
     },
 
     "custom/nightmode-2": {
         "format": "󰖜",
         "tooltip": true,
         "tooltip-format": "Cool (5500K)",
-        "on-click": "killall -9 hyprsunset; hyprsunset --temperature 5500 &"
+        "on-click": "pkill gammastep; gammastep -O 5500"
     },
 
     "custom/nightmode-3": {
         "format": "󰖙",
         "tooltip": true,
         "tooltip-format": "Neutral (4500K)",
-        "on-click": "killall -9 hyprsunset; hyprsunset --temperature 4500 &"
+        "on-click": "pkill gammastep; gammastep -O 4500"
     },
 
     "custom/nightmode-4": {
         "format": "󰖕",
         "tooltip": true,
         "tooltip-format": "Warm (3500K)",
-        "on-click": "killall -9 hyprsunset; hyprsunset --temperature 3500 &"
+        "on-click": "pkill gammastep; gammastep -O 3500"
     },
 
     "custom/nightmode-5": {
         "format": "󰖔",
         "tooltip": true,
         "tooltip-format": "Very Warm (2500K)",
-        "on-click": "killall -9 hyprsunset; hyprsunset --temperature 2500 &"
+        "on-click": "pkill gammastep; gammastep -O 2500"
     },
 
     "custom/nightmode-6": {
         "format": "󰽥",
         "tooltip": true,
         "tooltip-format": "Campfire (1500K)",
-        "on-click": "killall -9 hyprsunset; hyprsunset --temperature 1500 &"
+        "on-click": "pkill gammastep; gammastep -O 1500"
     },
 
     "disk": {
@@ -198,7 +221,7 @@
         "format": "󰋊 {percentage_used}%",
         "format-alt": "󰋊 {used}",
         "path": "/",
-        "on-click": "ghostty -e gdu /",
+        "on-click": "kitty -e gdu /",
         "tooltip-format": "Used: {used} / {total}\nUsage: {percentage_used}%"
     },
 
@@ -209,35 +232,15 @@
 
     "group/power": {
         "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 500,
-            "children-class": "not-power",
-            "transition-left-to-right": false
-        },
         "modules": [
-            "custom/power",
-            "custom/quit",
-            "custom/reboot"
+            "custom/power"
         ]
     },
 
     "custom/power": {
         "format": "➕", 
         "tooltip": true,
-        "tooltip-format": "Power Menu"
-    },
-
-    "custom/quit": {
-        "format": "󰐥",
-        "tooltip": true,
-        "tooltip-format": "Shutdown",
-        "on-click": "shutdown now"
-    },
-
-    "custom/reboot": {
-        "format": "󰜉",
-        "tooltip": true,
-        "tooltip-format": "Reboot",
-        "on-click": "reboot"
+        "tooltip-format": "Power Menu",
+        "on-click": "bash /home/akhil/.config/rofi/powermenu.sh"
     }
 }

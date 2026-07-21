@@ -63,7 +63,7 @@
     "rewrite": {
         "(.*) — Mozilla Firefox": "󰈹 $1",
         "(.*) - Mozilla Firefox": "󰈹 $1",
-        "(.*) - kitty": " $1",
+        "(.*) - foot": " $1",
         "(.*) - Yazi": " $1"
        }
     },
@@ -72,7 +72,7 @@
         "format": "󰚰 {}",
         "exec": "checkupdates | wc -l",
         "interval": 3600,
-        "on-click": "kitty -e sudo pacman -Syu",
+        "on-click": "foot -e sudo pacman -Syu",
         "signal": 8
     },
 
@@ -86,7 +86,7 @@
         "format": "󰻠 {usage}%",
         "format-alt": "󰻠 {avg_frequency} GHz",
         "interval": 2,
-        "on-click": "kitty -e btop",
+        "on-click": "foot -e btop",
         "tooltip-format": "CPU Usage: {usage}%\nFrequency: {avg_frequency} GHz"
     },
 
@@ -94,7 +94,7 @@
         "format": "󰍛 {used:0.1f}G",
         "format-alt": "󰍛 {percentage}%",
         "interval": 2,
-        "on-click": "kitty -e btop",
+        "on-click": "foot -e btop",
         "tooltip-format": "RAM: {used:0.1f}GB / {total:0.1f}GB\nUsage: {percentage}%"
     },
 
@@ -102,7 +102,7 @@
         "critical-threshold": 80,
         "format": "{icon} {temperatureC}°C",
         "format-icons": ["󱃃", "󰔏", "󱃂"],
-        "on-click": "kitty -e s-tui"
+        "on-click": "foot -e s-tui"
     },
 
     "battery": {
@@ -119,10 +119,10 @@
         "format-ethernet": "󰈀 Connected",
         "format-disconnected": "󰖪 Offline",
         "format-alt": "󰩟 {ipaddr}",
-        "on-click": "kitty -e nmtui",
+        "on-click": "foot --app-id=impala-float -e impala",
         "tooltip-format-wifi": "SSID: {essid}\nSignal: {signalStrength}%\nIP: {ipaddr}",
         "tooltip-format-ethernet": "Connection: {ifname}\nIP: {ipaddr}"
-    },
+   }, 
 
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -221,7 +221,7 @@
         "format": "󰋊 {percentage_used}%",
         "format-alt": "󰋊 {used}",
         "path": "/",
-        "on-click": "kitty -e gdu /",
+        "on-click": "foot -e gdu /",
         "tooltip-format": "Used: {used} / {total}\nUsage: {percentage_used}%"
     },
 

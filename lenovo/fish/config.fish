@@ -13,6 +13,7 @@ set -x SUDO_EDITOR nvim
 # #######################################################################################
 set -g fish_greeting
 
+set -gx PATH ~/.local/bin $PATH
 # ======================================================================================
 # INTERACTIVE MODE CHECK
 # ======================================================================================
@@ -39,7 +40,7 @@ alias cls='clear'
 
 # Boot into Windows on next reboot
 # Uses efibootmgr to set Windows (0001) as next boot entry, then reboots
-alias windows='sudo efibootmgr -n 0000; sudo reboot'
+alias windows='sudo efibootmgr -n 0002; sudo reboot'
 
 
 # ======================================================================================
@@ -66,7 +67,23 @@ alias hyprc='nvim ~/.config/hypr/hyprland.conf'
 # FISH CONFIG SHORTCUT
 # ======================================================================================
 
-alias fishc='sudo nvim .config/fish/config.fish'
+alias fishc='nvim ~/.config/fish/config.fish'
+
+
+## EDITING NIRI CONFIG SHORTCUT
+
+alias niric='nvim ~/.config/niri/config.kdl'
+
+
+# ======================================================================================
+# PACMAN SHORTCUTS 
+# ======================================================================================
+alias u='sudo pacman -Syu'
+alias s='yay -Ss'
+alias info='yay -Qs'
+alias i='sudo pacman -S'
+alias remove='yay -R'
+alias install='yay -S'
 
 
 
