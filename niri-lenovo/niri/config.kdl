@@ -136,8 +136,6 @@ spawn-at-startup "swaync"
 // Start Wallpaper (awww instead of waypaper)
 spawn-at-startup "awww-daemon"
 
-//Needed for some apps specially gaming
-spawn-at-startup "xwayland-satellite"
 
 // CRITICAL: Systemd/DBus integration
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
