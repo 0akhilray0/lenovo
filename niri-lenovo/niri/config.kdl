@@ -239,6 +239,30 @@ animations {
 
 
 // ┌─────────────────────────────────────────────────────────┐
+// │           BLUR SETTINGS                                 │
+// └─────────────────────────────────────────────────────────┘
+
+// Place this at the top level of your config file
+blur {
+    // 1. Density / Strength (Integer)
+    // Higher numbers make the blur thicker and smoother. 
+    passes 2       // Default is 3. Try 4 or 5 for high intensity.
+
+    // 2. Spread / Radius (Float)
+    // Higher numbers stretch the blur further outwards.
+    offset 4     // Default is 3.0.
+
+    // 3. Optional: Color saturation boost behind the window
+    saturation 2 // Default is 1.5. 0.0 is black & white.
+    
+    // 4. Optional: Grain overlay to prevent color banding
+    noise 0.0     // Default is 0.02.
+}
+
+
+
+
+// ┌─────────────────────────────────────────────────────────┐
 // │  SECTION 6: WINDOW RULES                                │
 // └─────────────────────────────────────────────────────────┘
 
@@ -251,6 +275,9 @@ window-rule {
 window-rule {
     match is-active=true
     opacity 1.0
+    background-effect {
+        blur true
+    }
 }
 
 // [ADDED] Force EVERY window to open maximized automatically (Tablet Mode)

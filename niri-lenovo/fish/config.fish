@@ -82,7 +82,7 @@ alias yu='python lenovo/home/YOUTUBE-APPLICATION.py'
 # ======================================================================================
 # PACMAN SHORTCUTS 
 # ======================================================================================
-alias u='sudo pacman -Syu'
+alias u='sudo pacman -Syuu'
 alias s='yay -Ss'
 alias info='yay -Qs'
 alias i='sudo pacman -S'
