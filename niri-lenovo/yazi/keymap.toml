@@ -1,0 +1,8 @@
+[[mgr.prepend_keymap]]
+on = "<C-c>"
+run = [
+  'shell "for path in %s; do echo \"file://$path\"; done | wl-copy -t text/uri-list" --orphan',
+  "yank"
+]
+desc = "Copy selected file(s) to clipboard"
+
