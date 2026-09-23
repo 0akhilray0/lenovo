@@ -10,7 +10,7 @@ window#waybar {
 * {
     border: none;
     border-radius: 1px; /* Sharp corners */
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "IBMPlexMono-Thin.ttf";
     font-size: 13px; 
     font-weight: 700;
     min-height: 0;

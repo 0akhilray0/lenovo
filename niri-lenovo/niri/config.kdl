@@ -43,9 +43,9 @@ cursor {
 // ┌─────────────────────────────────────────────────────────┐
 // │  SECTION 2: OUTPUTS (MONITORS)                          │
 // └─────────────────────────────────────────────────────────┘
-output "DSI-1" {
+output "eDP-1" {
     // Resolution and refresh rate
-    mode "800x1280@60"
+    mode "1920x1080@60"
 
     // Scale
     scale 1
@@ -168,11 +168,11 @@ animations {
     // 1.0 = Normal speed. 
     // 2.0 = Half speed (Slow motion). 
     // 0.5 = Double speed (Fast).
-    slowdown 1
+    slowdown 0
 
     // Workspace Switching (Moving between desktops)
     workspace-switch {
-        duration-ms 700
+        duration-ms 600
         curve "ease-out-cubic"
     }
 
@@ -239,6 +239,30 @@ animations {
 
 
 // ┌─────────────────────────────────────────────────────────┐
+// │           BLUR SETTINGS                                 │
+// └─────────────────────────────────────────────────────────┘
+
+// Place this at the top level of your config file
+blur {
+    // 1. Density / Strength (Integer)
+    // Higher numbers make the blur thicker and smoother. 
+    passes 2       // Default is 3. Try 4 or 5 for high intensity.
+
+    // 2. Spread / Radius (Float)
+    // Higher numbers stretch the blur further outwards.
+    offset 4     // Default is 3.0.
+
+    // 3. Optional: Color saturation boost behind the window
+    saturation 2 // Default is 1.5. 0.0 is black & white.
+    
+    // 4. Optional: Grain overlay to prevent color banding
+    noise 0.0     // Default is 0.02.
+}
+
+
+
+
+// ┌─────────────────────────────────────────────────────────┐
 // │  SECTION 6: WINDOW RULES                                │
 // └─────────────────────────────────────────────────────────┘
 
@@ -251,6 +275,9 @@ window-rule {
 window-rule {
     match is-active=true
     opacity 1.0
+    background-effect {
+        blur true
+    }
 }
 
 // [ADDED] Force EVERY window to open maximized automatically (Tablet Mode)
@@ -285,8 +312,8 @@ window-rule {
 
 //For Opening Motrix in Fullscreen 
 window-rule {
-    match app-id="motrix"
-    open-maximized true
+    match app-id="Waydroid"
+    open-fullscreen true
 }
 
 // Opening Flowkeeper.
@@ -303,7 +330,7 @@ window-rule {
 
 // Opening Task Manager.
 window-rule {
-    match title="VISUALIZER"
+    match title="POWER-USAGE"
     open-maximized true
 }
 
@@ -353,8 +380,8 @@ binds {
     // LAUNCHING THE TASK MANAGER
     Ctrl+Shift+Escape hotkey-overlay-title="Open TaskManager: btop" {spawn "foot" "--title=TASK-MANAGER" "-e" "btop";}
 
-    // LAUNCHING THE audio visualizer
-    Mod+Shift+C hotkey-overlay-title="Open VISUALIZER: cava" {spawn "foot" "--title=VISUALIZER" "-e" "cava";}
+    // LAUNCHING THE audio POWER-USAGE
+    Mod+Shift+C hotkey-overlay-title="Open POWER-USAGE: POWER-USAGE" {spawn "foot" "--title=POWER-USAGE" "-e" "tty-power";}
 
 
 
